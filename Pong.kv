@@ -1,0 +1,48 @@
+<PongBall>:
+ size: 50,50
+ canvas:
+  Ellipse:
+   pos:self.pos
+   size:self.size  # Self is PongBall tag here
+
+<PongPaddle>
+ size:50,250
+ canvas:
+  Rectangle:
+   pos:self.pos
+   size:self.size
+
+<PongGame>:
+ ball:pong_ball
+ p1:Pong_Paddle_l
+ p2:Pong_Paddle_r
+ canvas:
+  Rectangle:
+   pos:self.center_x-5,0
+   size:10,self.height
+ Label:
+  font_size: 70
+  center_x: root.width/4
+  top:root.top-50
+  text: "Player 1"
+  text: str(root.p1.score)
+
+ Label:
+  font_size: 70
+  center_x: root.width* 3/4
+  top:root.top-50
+  text: str(root.p2.score)
+
+ PongBall:
+  id:pong_ball
+  center:self.parent.center
+
+ PongPaddle:
+  id:Pong_Paddle_l
+  x:root.x # Where my window starts
+  center_y:root.center_y
+
+ PongPaddle:
+  id:Pong_Paddle_r
+  x:root.width-self.width # Width of paddle is self ie paddle minus that part
+  center_y:root.center_y
